@@ -47,8 +47,30 @@ function singleRound(playerSelection, computerSelection) {
             return "Something went wrong"
     }
 }
-for (let i = 0; i < 5; i++) {
-    let playerSelection = prompt();
-    let computerSelection = computerPlay();
-    console.log(singleRound(playerSelection, computerSelection));
+
+function playRoundRock() {
+    played.textContent = "";
+    played.textContent = singleRound("rock", computerPlay());
 }
+
+function playRoundPaper() {
+    played.textContent = "";
+    played.textContent = singleRound("paper", computerPlay());
+}
+
+function playRoundScissors() {
+    played.textContent = "";
+    played.textContent = singleRound("scissors", computerPlay());
+}
+
+let body = document.querySelector("body");
+let rock = document.querySelector("#rock");
+let paper = document.querySelector("#paper");
+let scissors = document.querySelector("#scissors");
+let buttons = document.querySelector("#buttons");
+let played = document.createElement("div");
+body.appendChild(played);
+
+rock.addEventListener("click", playRoundRock);
+paper.addEventListener("click", playRoundPaper);
+scissors.addEventListener("click", playRoundScissors);
